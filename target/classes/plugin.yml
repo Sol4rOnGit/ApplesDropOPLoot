@@ -1,0 +1,4 @@
+name: ApplesDropOPLoot
+version: '1.0-SNAPSHOT'
+main: me.hiresh.applesdropoploot.applesDropOPLoot.ApplesDropOPLoot
+api-version: '1.21'
