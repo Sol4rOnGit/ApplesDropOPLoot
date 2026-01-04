@@ -29,6 +29,7 @@ public final class ApplesDropOPLoot extends JavaPlugin implements Listener{
 
     //Loot table and helper functions
     private static final ItemStack[] LootTable = {
+            //Diamond and derivatives
             new ItemStack(Material.DIAMOND, 1),
             new ItemStack(Material.DIAMOND_AXE, 1),
             new ItemStack(Material.DIAMOND_BLOCK, 1),
@@ -39,15 +40,28 @@ public final class ApplesDropOPLoot extends JavaPlugin implements Listener{
             new ItemStack(Material.DIAMOND_LEGGINGS, 1),
             new ItemStack(Material.DIAMOND_PICKAXE, 1),
             new ItemStack(Material.DIAMOND_SWORD, 1),
+
+            //Netherite and derivatives
             new ItemStack(Material.NETHERITE_SPEAR, 1),
             new ItemStack(Material.NETHERITE_SWORD, 1),
+
+            //Flight & Teleportation
             new ItemStack(Material.ELYTRA, 1),
             new ItemStack(Material.ENDER_PEARL, 1),
             new ItemStack(Material.FIREWORK_ROCKET, 8),
+
+            //Bows & Arrows
             new ItemStack(Material.BOW, 1),
             new ItemStack(Material.ARROW, 16),
             new ItemStack(Material.SPECTRAL_ARROW, 8),
+
+            //Other items
             new ItemStack(Material.IRON_INGOT, 3),
+            new ItemStack(Material.COAL, 1),
+            new ItemStack(Material.WATER_BUCKET, 1),
+
+            //Food
+            new ItemStack(Material.COOKED_PORKCHOP, 32),
             new ItemStack(Material.GOLDEN_APPLE, 2),
             new ItemStack(Material.ENCHANTED_GOLDEN_APPLE, 1)
     };
