@@ -1,12 +1,12 @@
 package me.hiresh.applesdropoploot.applesDropOPLoot;
 import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.java.JavaPlugin;
+import java.util.Random;
 
 //Imports
 import org.bukkit.World;
 import org.bukkit.Location;
 import org.bukkit.Material;
-
 
 //Events
 import org.bukkit.event.Listener; //Need to import this into Listener so it works
@@ -21,8 +21,41 @@ import org.bukkit.inventory.ItemStack;
 
 public final class ApplesDropOPLoot extends JavaPlugin implements Listener{
 
+    //Variables
+    private static final Random random = new Random();
+
     //Flags
     private static boolean isEnabled = false;
+
+    //Loot table and helper functions
+    private static final ItemStack[] LootTable = {
+            new ItemStack(Material.DIAMOND, 1),
+            new ItemStack(Material.DIAMOND_AXE, 1),
+            new ItemStack(Material.DIAMOND_BLOCK, 1),
+            new ItemStack(Material.DIAMOND_BOOTS, 1),
+            new ItemStack(Material.DIAMOND_HOE, 1),
+            new ItemStack(Material.DIAMOND_CHESTPLATE, 1),
+            new ItemStack(Material.DIAMOND_HELMET, 1),
+            new ItemStack(Material.DIAMOND_LEGGINGS, 1),
+            new ItemStack(Material.DIAMOND_PICKAXE, 1),
+            new ItemStack(Material.DIAMOND_SWORD, 1),
+            new ItemStack(Material.NETHERITE_SPEAR, 1),
+            new ItemStack(Material.NETHERITE_SWORD, 1),
+            new ItemStack(Material.ELYTRA, 1),
+            new ItemStack(Material.ENDER_PEARL, 1),
+            new ItemStack(Material.FIREWORK_ROCKET, 8),
+            new ItemStack(Material.BOW, 1),
+            new ItemStack(Material.ARROW, 16),
+            new ItemStack(Material.SPECTRAL_ARROW, 8),
+            new ItemStack(Material.IRON_INGOT, 3),
+            new ItemStack(Material.GOLDEN_APPLE, 2),
+            new ItemStack(Material.ENCHANTED_GOLDEN_APPLE, 1)
+    };
+
+    private static ItemStack getRandomOPLoot(){
+        int index = random.nextInt(LootTable.length);
+        return LootTable[index];
+    }
 
     @Override
     public void onEnable() {
@@ -51,16 +84,16 @@ public final class ApplesDropOPLoot extends JavaPlugin implements Listener{
             return;
         }
 
-        droppedItem.remove(); //Destroys an items
-
-        //Spawn from a loot table, a bunch of random items to be done LATER
+        droppedItem.remove(); //Destroys the item
 
         World world = player.getWorld(); //Get the current world that the player is in
         Location location = droppedItem.getLocation(); //Get the location of dropped item
 
-        //Spawn 1 diamond
-        ItemStack item = new ItemStack(Material.DIAMOND, 1); // Spawn one singular diamond
+        final int numItems = random.nextInt(4); //Max 3
 
-        world.dropItemNaturally(location, item); //Should drop the item
+        for (int i = 0; i < numItems; i++){
+            ItemStack currentItem = getRandomOPLoot();
+            world.dropItemNaturally(location, currentItem);
+        }
     }
 }
